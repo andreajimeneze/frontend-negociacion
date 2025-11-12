@@ -29,7 +29,7 @@ const MembersTable = () => {
     useEffect(() => {
         const fetchTeam = async () => {
             try {
-                const res = await fetch('http://localhost:3000/api/team');
+                const res = await fetch('/api/team');
                 const data = await res.json();
                 setEquipo(data.data);
             } catch (error) {
@@ -54,7 +54,7 @@ const MembersTable = () => {
         }
 
         try {
-            const res = await fetch('http://localhost:3000/api/team/create', {
+            const res = await fetch('/api/team/create', {
                 method: 'POST',
                 body: formData
             })
@@ -99,7 +99,7 @@ const MembersTable = () => {
         }
 
         try {
-            const res = await fetch(`http://localhost:3000/api/team/edit/${editId}`, {
+            const res = await fetch(`/api/team/edit/${editId}`, {
                 method: 'PUT',
                 body: formData
             })
@@ -122,7 +122,7 @@ const MembersTable = () => {
     const eliminarMiembro = async (id: number) => {
         if (!confirm('Está seguro que desea eliminar al miembro del equipo?')) return;
         try {
-            const res = await fetch(`http://localhost:3000/api/team/delete/${id}`, {
+            const res = await fetch(`/api/team/delete/${id}`, {
                 method: 'DELETE'
             })
 
@@ -263,7 +263,7 @@ const MembersTable = () => {
                                 <td className="px-4 py-3">{miembro.email}</td>
                                 <td className="px-4 py-3">{miembro.profesion}</td>
                                 <td className="px-4 py-3 w-[350px]">{miembro.experiencia}</td>
-                                <td className="px-4 py-3 w-[200px] "><img src={`http://localhost:3000/public/${miembro.foto}`} /></td>
+                                <td className="px-4 py-3 w-[200px] "><img src={`/public/${miembro.foto}`} /></td>
                                 <td className="px-4 py-3">{miembro.estado}</td>
                                 <td className="px-4 py-3 text-center space-x-2">
                                     <button

@@ -33,7 +33,7 @@ const ClientsTable = () => {
     useEffect(() => {
         const fetchClients = async () => {
             try {
-                const res = await fetch('http://localhost:3000/api/clients');
+                const res = await fetch('/api/clients');
                 const data = await res.json()
 
                 setClients(data.rows);
@@ -67,7 +67,7 @@ const ClientsTable = () => {
         }
 
         try {
-            const res = await fetch('http://localhost:3000/api/clients/create', {
+            const res = await fetch('/api/clients/create', {
                 method: 'POST',
                 body: formData,
             });
@@ -104,7 +104,7 @@ const ClientsTable = () => {
         }
 
         try {
-            const res = await fetch(`http://localhost:3000/api/clients/edit/${editId}`, {
+            const res = await fetch(`/api/clients/edit/${editId}`, {
                 method: 'PUT',
                 body: formData
             })
@@ -123,7 +123,7 @@ const ClientsTable = () => {
         if (!confirm('¿Estás seguro de eliminar a este cliente?')) return;
 
         try {
-            const res = await fetch(`http://localhost:3000/api/clients/delete/${id}`, {
+            const res = await fetch(`/api/clients/delete/${id}`, {
                 method: 'DELETE'
             })
 
@@ -295,7 +295,7 @@ const ClientsTable = () => {
                                     <td className="px-4 py-3">{cliente.telefono}</td>
                                     <td className="px-4 py-3">{cliente.numeroMiembros}</td>
                                     <td className="px-4 py-3 w-[250px]">{cliente.testimonio}</td>
-                                    <td className="px-4 py-3 w-[200px] "><img src={`http://localhost:3000/public/${cliente.logo}`} /></td>
+                                    <td className="px-4 py-3 w-[200px] "><img src={`/public/${cliente.logo}`} /></td>
                                     <td className="px-4 py-3 text-center space-x-2">
                                         <button
                                             className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm"

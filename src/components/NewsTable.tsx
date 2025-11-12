@@ -31,7 +31,7 @@ const NoticiasTable = () => {
 
   const fetchNoticias = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/news');
+      const res = await fetch('/api/news');
       const data = await res.json();
       setNoticias(data);
     } catch (error: unknown) {
@@ -64,7 +64,7 @@ const NoticiasTable = () => {
     }
 
     try {
-      const res = await fetch('http://localhost:3000/api/news/create', {
+      const res = await fetch('/api/news/create', {
         method: 'POST',
         body: formData,
       });
@@ -103,7 +103,7 @@ const NoticiasTable = () => {
     }
    
     try {
-      const res = await fetch(`http://localhost:3000/api/news/edit/${editId}`, {
+      const res = await fetch(`/api/news/edit/${editId}`, {
         method: 'PUT',
         body: formData
       });
@@ -122,7 +122,7 @@ const NoticiasTable = () => {
     if (!confirm('¿Estás seguro de eliminar esta noticia?')) return;
 
     try {
-      const res = await fetch(`http://localhost:3000/api/news/delete/${id}`, {
+      const res = await fetch(`/api/news/delete/${id}`, {
         method: 'DELETE',
       });
       if (!res.ok) throw new Error('Error al eliminar');
@@ -239,7 +239,7 @@ return (
                 <td className="px-4 py-3">
                   {noticia.url_imagen && (
                     <img
-                      src={`http://localhost:3000/public/${noticia.url_imagen}`}
+                      src={`/public/${noticia.url_imagen}`}
                       alt="Noticia"
                       className="max-w-[120px] max-h-[80px] object-cover rounded"
                     />

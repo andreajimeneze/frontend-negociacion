@@ -60,7 +60,7 @@ const Team = () => {
                 <div className="md:flex">
                   <div className="md:w-1/3">
                     <img
-                      src={`http://localhost:3000/public/${member.foto}`}
+                      src={`/public/${member.foto}`}
 
                       alt={member.nombre}
                       className="w-full h-64 md:h-full object-cover"

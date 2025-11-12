@@ -112,7 +112,7 @@ const Clients = () => {
                 <div className="flex items-center mb-4">
                   <img
                     className="w-20 h-20 rounded-full object-cover mr-4"
-                    src={`http://localhost:3000/public/${client.logo}`}
+                    src={`/public/${client.logo}`}
                     alt={client.nombre}
                   />
                   <div className='grid-cols-2 md:grid-cols-2 lg:grid-cols-1'>

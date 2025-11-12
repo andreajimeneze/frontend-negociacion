@@ -86,7 +86,7 @@ console.log('fetch dentro de useEffect', data);
               <div className="md:flex">
                 <div className="md:w-1/2">
                   <img
-                    src={`http://localhost:3000/public/${featuredPost.image}`}
+                    src={`/public/${featuredPost.image}`}
                     alt={featuredPost.title}
                     className="w-full h-64 md:h-full object-cover"
                   />
@@ -158,7 +158,7 @@ console.log('fetch dentro de useEffect', data);
               <article key={post.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div className="relative">
                   <img
-                    src={`http://localhost:3000/public/${post.image}`}
+                    src={`/public/${post.image}`}
                     alt={post.title}
                     className="w-full h-48 object-cover"
                   />
