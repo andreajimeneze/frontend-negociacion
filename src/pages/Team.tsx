@@ -17,7 +17,7 @@ const Team = () => {
   useEffect (() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/team');
+        const res = await fetch('/api/team');
         const data = await res.json();
      
         setTeam(data.data);

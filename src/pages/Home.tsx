@@ -43,7 +43,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/negotiations');
+        const res = await fetch('/api/negotiations');
         const data = await res.json();
 
         console.log(data);

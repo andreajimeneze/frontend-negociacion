@@ -32,7 +32,7 @@ const Noticias = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/news');
+        const res = await fetch('/api/news');
         const data = await res.json();
 console.log('fetch dentro de useEffect', data);
 
