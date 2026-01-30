@@ -19,7 +19,7 @@ useEffect(() => {
   const fetchData = async () => {
     try {
       const data = await fetchApi<{ data: Member[] }>('/api/team');
-        // ↑ aquí ya es JSON
+         console.log('DATA DESDE API 👉', data);
 
       setTeam(data.data);
     } catch (error) {
