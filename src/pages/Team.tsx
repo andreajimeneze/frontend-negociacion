@@ -1,5 +1,6 @@
 import { Linkedin, Mail, Award, /* BookOpen*/ } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { fetchApi } from '../services/api.ts';
 
 const Team = () => {
  interface Member {
@@ -14,19 +15,21 @@ const Team = () => {
 
   const [ team, setTeam ] = useState<Member[]>([]);
 
-  useEffect (() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/team');
-        const data = await res.json();
-     
-        setTeam(data.data);
-      } catch(error) {
-        console.error('Error al obtener al equipo', error);
-      }
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const data = await fetchApi<{ data: Member[] }>('/api/team');
+        // ↑ aquí ya es JSON
+
+      setTeam(data.data);
+    } catch (error) {
+      console.error('Error al obtener al equipo', error);
     }
-    fetchData();
-  }, []);
+  };
+
+  fetchData();
+}, []);
+
 
   return (
     <div className="min-h-screen bg-gray-50">

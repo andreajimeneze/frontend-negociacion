@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { fetchApi } from '../services/api.ts';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -7,36 +8,34 @@ export default function Login() {
     const [remember, setRemember] = useState(false);
     const navigate = useNavigate();
 
-    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        try {
-            const response = await fetch('/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            });
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
 
-            const data = await response.json();
-            console.log('Respuesta del backend:', data);
+  try {
+    const data = await fetchApi<{
+      token: string;
+      user: any;
+      message?: string;
+    }>('/api/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    });
 
-            if (!response.ok) {
-                alert(data.message || 'Login fallido');
-                return;
-            }
+    // guardar usuario
+    localStorage.setItem('user', JSON.stringify(data.user));
+    localStorage.setItem('token', data.token);
 
-            const storage = localStorage.setItem('user', JSON.stringify(data.user));
-            console.log("guardado en localStorage", storage);
-            
-            alert(data.message);
-            navigate('/dashboard');
+    console.log('Usuario guardado en localStorage', data.user);
 
-        } catch (error) {
-            alert('Error en la solicitud');
-            console.error(error);
-        }
-    };
+    alert(data.message || 'Login exitoso');
+    navigate('/dashboard');
+
+  } catch (error: any) {
+    alert(error.message || 'Login fallido');
+    console.error(error);
+  }
+};
+
 
     return (
         <section className="flex items-center justify-center min-h-screen bg-gray-100 py-12 px-4">

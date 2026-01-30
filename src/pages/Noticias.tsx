@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Calendar, User, ArrowRight, Search } from 'lucide-react';
+import { fetchApi } from '../services/api.ts';
 
 const Noticias = () => {
   interface Noticia {
@@ -30,30 +31,31 @@ const Noticias = () => {
   const categories = ['Todas', 'Negociación Colectiva', 'Derecho Laboral', 'Noticias'];
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/news');
-        const data = await res.json();
-console.log('fetch dentro de useEffect', data);
+  const fetchData = async () => {
+    try {
+      const data = await fetchApi<Noticia[]>('/api/news');
 
-        const mapped = data.map((n: Noticia): Post => ({
-          id: n.id,
-          title: n.titulo,
-          excerpt: n.resumen,
-          content: n.texto,
-          date: n.fecha_publicacion,
-          image: n.url_imagen || '/default.jpg',
-          slug: n.slug,
-        }));
+      console.log('fetch dentro de useEffect', data);
 
-        setPosts(mapped);
-      } catch (error) {
-        console.error('Error al obtener las noticias:', error);
-      }
-    };
+      const mapped: Post[] = data.map((n) => ({
+        id: n.id,
+        title: n.titulo,
+        excerpt: n.resumen,
+        content: n.texto,
+        date: n.fecha_publicacion,
+        image: n.url_imagen || '/default.jpg',
+        slug: n.slug,
+      }));
 
-    fetchData();
-  }, []);
+      setPosts(mapped);
+    } catch (error) {
+      console.error('Error al obtener las noticias:', error);
+    }
+  };
+
+  fetchData();
+}, []);
+
 
  
   const featuredPost = posts[0];

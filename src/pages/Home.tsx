@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { fetchApi } from '../services/api.ts';
 import { 
   Scale, 
   Users, 
@@ -40,20 +41,21 @@ const Home = () => {
     }
   ];
   const [negociacionRealizada, setNegociacionRealizada] = useState(0);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/negotiations');
-        const data = await res.json();
+ useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const data = await fetchApi<{ countNegotiations: number }>('/api/negotiations');
 
-        console.log(data);
-        setNegociacionRealizada(data.countNegotiations);
-      }catch (error) {
-        console.error('Error al obtener al equipo', error);
-      }
+      console.log(data);
+      setNegociacionRealizada(data.countNegotiations);
+    } catch (error) {
+      console.error('Error al obtener al equipo', error);
     }
-    fetchData();
-  },[]);
+  };
+
+  fetchData();
+}, []);
+
 
   // const stats = [
   //   { number: '150+', label: 'Negociaciones Exitosas' },

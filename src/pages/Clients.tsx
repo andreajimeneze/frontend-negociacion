@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { fetchApi } from '../services/api.ts';
 
 const Clients = () => {
   interface Client {
@@ -21,37 +22,41 @@ const Clients = () => {
   const [negociacionRealizada, setNegociacionRealizada] = useState<number>(0);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/negotiations');
-        const data = await res.json();
+  const fetchData = async () => {
+    try {
+      const data = await fetchApi<{ countNegotiations: number }>('/api/negotiations');
 
-        console.log(data);
-        setNegociacionRealizada(data.countNegotiations);
-      }catch (error) {
-        console.error('Error al obtener al equipo', error);
-      }
+      console.log(data);
+      setNegociacionRealizada(data.countNegotiations);
+    } catch (error) {
+      console.error('Error al obtener al equipo', error);
     }
-    fetchData();
-  },[]);
+  };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/clients');
-        const data = await res.json();
+  fetchData();
+}, []);
 
 
-        setClients(data.rows);
-        setCountClients(data.count);
-        setTotalMiembros(data.totalMiembros);
+ useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const data = await fetchApi<{
+        rows: Client[];
+        count: number;
+        totalMiembros: number;
+      }>('/api/clients');
 
-      } catch (error) {
-        console.error('Error al obtener al equipo', error);
-      }
+      setClients(data.rows);
+      setCountClients(data.count);
+      setTotalMiembros(data.totalMiembros);
+
+    } catch (error) {
+      console.error('Error al obtener los clientes', error);
     }
-    fetchData();
-  }, []);
+  };
+
+  fetchData();
+}, []);
 
 
 
