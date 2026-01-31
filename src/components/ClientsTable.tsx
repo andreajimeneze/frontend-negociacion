@@ -10,7 +10,7 @@ interface Cliente {
   telefono: string;
   email: string;
   logo: string;
-  numeroMiembros: number;
+  numero_miembros: number;
   testimonio: string;
 }
 
@@ -25,7 +25,7 @@ const ClientsTable = () => {
     locality: '',
     telefono: '',
     email: '',
-    numeroMiembros: 0,
+    numero_miembros: 0,
     testimonio: '',
   });
 
@@ -55,7 +55,7 @@ const ClientsTable = () => {
     const { name, value } = e.target;
     setNuevoCliente(prev => ({
       ...prev,
-      [name]: name === 'numeroMiembros' ? Number(value) : value,
+      [name]: name === 'numero_miembros' ? Number(value) : value,
     }));
   };
 
@@ -67,7 +67,7 @@ const ClientsTable = () => {
       locality: '',
       telefono: '',
       email: '',
-      numeroMiembros: 0,
+      numero_miembros: 0,
       testimonio: '',
     });
     setLogo(null);
@@ -84,7 +84,7 @@ const ClientsTable = () => {
       locality: cliente.locality,
       telefono: cliente.telefono,
       email: cliente.email,
-      numeroMiembros: cliente.numeroMiembros,
+      numero_miembros: cliente.numero_miembros,
       testimonio: cliente.testimonio,
     });
     setLogo(null);
@@ -104,7 +104,7 @@ const ClientsTable = () => {
 
   const agregarNuevoCliente = async () => {
     try {
-      const response = await fetchApi<{ data: Cliente }>('/api/clients/create', {
+      const response = await fetchApi<{ data: Cliente }>('/api/clients', {
         method: 'POST',
         body: buildFormData(),
       });
@@ -121,7 +121,7 @@ const ClientsTable = () => {
 
     try {
       const response = await fetchApi<{ data: Cliente }>(
-        `/api/clients/edit/${editId}`,
+        `/api/clients/${editId}`,
         {
           method: 'PUT',
           body: buildFormData(),
@@ -141,7 +141,7 @@ const ClientsTable = () => {
     if (!confirm('¿Eliminar este cliente?')) return;
 
     try {
-      await fetchApi(`/api/clients/delete/${id}`, { method: 'DELETE' });
+      await fetchApi(`/api/clients/${id}`, { method: 'DELETE' });
       setClients(prev => prev.filter(cli => cli.id !== id));
     } catch (error) {
       console.error('Error al eliminar cliente', error);
@@ -179,7 +179,7 @@ const ClientsTable = () => {
         <input
           type="number"
           name="numeroMiembros"
-          value={nuevoCliente.numeroMiembros}
+          value={nuevoCliente.numero_miembros}
           onChange={handleChange}
           placeholder="Número de socios"
           className="w-full border p-2 rounded"

@@ -54,7 +54,7 @@ const MembersTable = () => {
     if (foto) formData.append('foto', foto);
 
     try {
-      const response = await fetchApi<{ data: Equipo }>('/api/team/create', {
+      const response = await fetchApi<{ data: Equipo }>('/api/team', {
         method: 'POST',
         body: formData
       });
@@ -83,7 +83,7 @@ const MembersTable = () => {
 
     try {
       const response = await fetchApi<{ data: Equipo }>(
-        `/api/team/edit/${editId}`,
+        `/api/team/${editId}`,
         { method: 'PUT', body: formData }
       );
 
@@ -100,7 +100,7 @@ const MembersTable = () => {
     if (!confirm('¿Eliminar miembro?')) return;
 
     try {
-      await fetchApi(`/api/team/delete/${id}`, { method: 'DELETE' });
+      await fetchApi(`/api/team/${id}`, { method: 'DELETE' });
       setEquipo(equipo.filter(m => m.id !== id));
     } catch (error) {
       console.error(error);

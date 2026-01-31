@@ -65,7 +65,7 @@ const NoticiasTable = () => {
     }
 
     try {
-      const response = await fetchApi<{ data: Noticia }>('/api/news/create', {
+      const response = await fetchApi<{ data: Noticia }>('/api/news', {
         method: 'POST',
         body: formData,
       });
@@ -97,7 +97,7 @@ const NoticiasTable = () => {
 
     try {
       const response = await fetchApi<{ data: Noticia }>(
-        `/api/news/edit/${editId}`,
+        `/api/news/${editId}`,
         { method: 'PUT', body: formData }
       );
 
@@ -119,7 +119,7 @@ const NoticiasTable = () => {
     if (!confirm('¿Eliminar esta noticia?')) return;
 
     try {
-      await fetchApi(`/api/news/delete/${id}`, { method: 'DELETE' });
+      await fetchApi(`/api/news/${id}`, { method: 'DELETE' });
       setNoticias(noticias.filter(n => n.id !== id));
     } catch (error) {
       console.error(error);
