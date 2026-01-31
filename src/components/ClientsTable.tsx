@@ -178,7 +178,7 @@ const ClientsTable = () => {
 
         <input
           type="number"
-          name="numeroMiembros"
+          name="numero_miembros"
           value={nuevoCliente.numero_miembros}
           onChange={handleChange}
           placeholder="Número de socios"
