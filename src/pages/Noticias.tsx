@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Calendar, User, ArrowRight, Search } from 'lucide-react';
 import { fetchApi } from '../services/api.ts';
+import { Link } from 'react-router-dom';
 
 const Noticias = () => {
   interface Noticia {
@@ -109,10 +110,10 @@ const Noticias = () => {
                     <User className="h-4 w-4 mr-2" />
                     <span>Gesynco</span>
                   </div>
-                  <button className="bg-white text-orange-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-colors duration-300 inline-flex items-center">
+                  <Link to={`/noticia/${featuredPost.slug}`} className="bg-white text-orange-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-colors duration-300 inline-flex items-center">
                     Leer Artículo Completo
                     <ArrowRight className="ml-2 h-4 w-4" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

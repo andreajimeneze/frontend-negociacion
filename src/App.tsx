@@ -13,6 +13,7 @@ import MembersTable from './components/MembersTable';
 import NewsTable from './components/NewsTable';
 import ClientsTable from './components/ClientsTable';
 import Register from './components/Register';
+import NoticiaDetalle from './pages/NoticiaDetalle';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/dashboard-equipo" element={<MembersTable />} />
             <Route path="/dashboard-noticias" element={<NewsTable />} />
             <Route path="/dashboard-clientes" element={<ClientsTable />} />
+            <Route path="/noticias/:slug" element={<NoticiaDetalle />} />
           </Routes>
         </main>
         <Footer />
