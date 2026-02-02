@@ -88,7 +88,7 @@ const Noticias = () => {
               <div className="md:flex">
                 <div className="md:w-1/2">
                   <img
-                    src={`/public/${featuredPost.image}`}
+                    src={`https://api-negociacion.vercel.app/public/${featuredPost.image}`}
                     alt={featuredPost.title}
                     className="w-full h-64 md:h-full object-cover"
                   />
@@ -160,7 +160,7 @@ const Noticias = () => {
               <article key={post.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div className="relative">
                   <img
-                    src={`/public/${post.image}`}
+                    src={`https://api-negociacion.vercel.app/public/${post.image}`}
                     alt={post.title}
                     className="w-full h-48 object-cover"
                   />

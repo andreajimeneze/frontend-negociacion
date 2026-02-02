@@ -146,7 +146,7 @@ const Services = () => {
                 </div>
                 <div className="flex-1">
                   <img
-                    src={service.image}
+                    src={`https://api-negociacion.vercel.app/public/${service.image}`}
                     alt={service.title}
                     className="rounded-xl shadow-lg w-full h-80 object-cover"
                   />
