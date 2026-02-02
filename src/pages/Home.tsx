@@ -57,13 +57,6 @@ const Home = () => {
 }, []);
 
 
-  // const stats = [
-  //   { number: '150+', label: 'Negociaciones Exitosas' },
-  //   { number: '50+', label: 'Sindicatos Asesorados' },
-  //   { number: '15+', label: 'Años de Experiencia' },
-  //   { number: '95%', label: 'Tasa de Éxito' }
-  // ];
-
   return (
     <div>
       {/* Hero Section */}
@@ -106,7 +99,7 @@ const Home = () => {
       {/* Stats Section */}
       <section className="py-16 bg-orange-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid">
            
               <div className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-white mb-2">
