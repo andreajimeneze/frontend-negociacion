@@ -34,7 +34,7 @@ function App() {
             <Route path="/dashboard-equipo" element={<MembersTable />} />
             <Route path="/dashboard-noticias" element={<NewsTable />} />
             <Route path="/dashboard-clientes" element={<ClientsTable />} />
-            <Route path="/noticias/:slug" element={<NoticiaDetalle />} />
+            <Route path="/noticia/:slug" element={<NoticiaDetalle />} />
           </Routes>
         </main>
         <Footer />
