@@ -117,7 +117,7 @@ const Clients = () => {
                 <div className="flex items-center mb-4">
                   <img
                     className="w-20 h-20 rounded-full object-cover mr-4"
-                    src={client.logo}
+                    src={`https://api-negociacion.vercel.app/public/${client.logo}`}
                     alt={client.nombre}
                   />
                   <div className='grid-cols-2 md:grid-cols-2 lg:grid-cols-1'>
