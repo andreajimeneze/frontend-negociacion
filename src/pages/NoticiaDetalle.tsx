@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { fetchApi } from '../services/api';
+import { fetchApi } from '../services/api.ts';
 
 const NoticiaDetalle = () => {
   const { slug } = useParams();
@@ -8,7 +8,7 @@ const NoticiaDetalle = () => {
 
   useEffect(() => {
     const fetchPost = async () => {
-      const data = await fetchApi(`/news/${slug}`);
+      const data = await fetchApi(`/api/news/${slug}`);
 
       setPost(data);
     };
