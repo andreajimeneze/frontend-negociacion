@@ -193,10 +193,10 @@ const Noticias = () => {
 
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-500">5 minutos</span>
-                    <button className="text-orange-600 hover:text-orange-700 font-semibold inline-flex items-center">
-                      Leer más
-                      <ArrowRight className="ml-1 h-4 w-4" />
-                    </button>
+                    <Link to={`/noticia/${post.slug}`} className="bg-white text-orange-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-colors duration-300 inline-flex items-center">
+                    Leer más
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
                   </div>
                 </div>
               </article>

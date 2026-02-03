@@ -8,7 +8,7 @@ const NoticiaDetalle = () => {
 
   useEffect(() => {
     const fetchPost = async () => {
-      const data = await fetchApi(`/api/news/${slug}`);
+      const data = await fetchApi(`/news/${slug}`);
 
       setPost(data);
     };
